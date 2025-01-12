@@ -43,6 +43,7 @@ const currencies = [
   { code: "JPY", symbol: "¥" },
   { code: "CAD", symbol: "C$" },
   { code: "AUD", symbol: "A$" },
+  { code: "INR", symbol: "₹" },
 ];
 
 export const ExpenseForm = () => {

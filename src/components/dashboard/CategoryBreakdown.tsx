@@ -15,6 +15,7 @@ const getCurrencySymbol = (currency: string) => {
     JPY: "¥",
     CAD: "C$",
     AUD: "A$",
+    INR: "₹",
   };
   return symbols[currency] || currency;
 };
