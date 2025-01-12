@@ -31,9 +31,19 @@ import { toast } from "sonner";
 const formSchema = z.object({
   amount: z.string(),
   category: z.string(),
+  currency: z.string(),
   date: z.date(),
   description: z.string().optional(),
 });
+
+const currencies = [
+  { code: "USD", symbol: "$" },
+  { code: "EUR", symbol: "€" },
+  { code: "GBP", symbol: "£" },
+  { code: "JPY", symbol: "¥" },
+  { code: "CAD", symbol: "C$" },
+  { code: "AUD", symbol: "A$" },
+];
 
 export const ExpenseForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -41,6 +51,7 @@ export const ExpenseForm = () => {
     defaultValues: {
       amount: "",
       category: "",
+      currency: "USD",
       date: new Date(),
       description: "",
     },
@@ -55,18 +66,44 @@ export const ExpenseForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <FormField
-          control={form.control}
-          name="amount"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Amount</FormLabel>
-              <FormControl>
-                <Input placeholder="0.00" {...field} />
-              </FormControl>
-            </FormItem>
-          )}
-        />
+        <div className="flex gap-4">
+          <FormField
+            control={form.control}
+            name="amount"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Amount</FormLabel>
+                <FormControl>
+                  <Input placeholder="0.00" {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="currency"
+            render={({ field }) => (
+              <FormItem className="w-32">
+                <FormLabel>Currency</FormLabel>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select currency" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {currencies.map((currency) => (
+                      <SelectItem key={currency.code} value={currency.code}>
+                        {currency.code} ({currency.symbol})
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </FormItem>
+            )}
+          />
+        </div>
 
         <FormField
           control={form.control}

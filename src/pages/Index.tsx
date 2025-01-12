@@ -18,7 +18,6 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container py-8">
-        {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-4xl font-bold">Finance Tracker</h1>
@@ -45,52 +44,45 @@ const Index = () => {
           </Sheet>
         </div>
 
-        {/* Dashboard Grid */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {/* Total Balance Card */}
           <Card className="p-6 col-span-full md:col-span-1">
             <p className="text-sm font-medium text-muted-foreground">
               Total Balance
             </p>
-            <h2 className="text-3xl font-bold">$4,550.00</h2>
+            <h2 className="text-3xl font-bold">$4,550.00 USD</h2>
             <p className="text-sm text-muted-foreground mt-1">
               Updated 2 minutes ago
             </p>
           </Card>
 
-          {/* Monthly Budget Card */}
           <Card className="p-6 col-span-full md:col-span-1">
             <p className="text-sm font-medium text-muted-foreground">
               Monthly Budget
             </p>
-            <h2 className="text-3xl font-bold">$3,000.00</h2>
+            <h2 className="text-3xl font-bold">$3,000.00 USD</h2>
             <p className="text-sm text-expense-low mt-1">
-              $850.00 remaining this month
+              $850.00 USD remaining this month
             </p>
           </Card>
 
-          {/* Total Expenses Card */}
           <Card className="p-6 col-span-full md:col-span-1">
             <p className="text-sm font-medium text-muted-foreground">
               Total Expenses
             </p>
-            <h2 className="text-3xl font-bold">$2,150.00</h2>
+            <h2 className="text-3xl font-bold">$2,150.00 USD</h2>
             <p className="text-sm text-expense-medium mt-1">
               This month so far
             </p>
           </Card>
 
-          {/* Spending Chart */}
           <div className="col-span-full lg:col-span-2">
             <SpendingChart />
           </div>
 
-          {/* Category Breakdown */}
           <div className="col-span-full lg:col-span-1">
             <CategoryBreakdown />
           </div>
 
-          {/* Goals Section */}
           <div className="col-span-full">
             <h2 className="text-2xl font-semibold mb-4">Financial Goals</h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
